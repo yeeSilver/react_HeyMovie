@@ -1,11 +1,13 @@
-import axios from "axios";
+const requests = {
+  fetchNowPlaying: "movie/now_playing",
+  fetchNetflixOriginals: "/discover/tv?with_networks=213",
+  fetchTopRated: "movie/top_rated",
+  fetchTrending: "/trending/all/week",
+  fetchActionMovie: "/discover/move?with_grenres=28",
+  fetchComedyMovie: "/discover/move?with_grenres=35",
+  fetchHorrorMovie: "/discover/move?with_grenres=27",
+  fetchRomanceMovie: "/discover/move?with_grenres=1049",
+  fetchDocumentaries: "/discover/move?with_grenres=99",
+}
 
-const instance = axios.create({
-  baseURL: "https://api.themoviedb.org/3",
-  params:{
-    api_key: "10bff6291faf8086404cf4ea07208429",
-    language: "ko-KR",
-  }
-});
-
-export default instance
+export default requests;
