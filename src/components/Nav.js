@@ -26,7 +26,7 @@ export default function Nav() {
     */
     <nav className={`nav ${show && "nav__black"}`}>
       <img alt='logo'
-      src='https://user-images.githubusercontent.com/48678872/159113400-7f9ba21f-c25d-4194-a777-223cad613bc4.png'
+      src='https://user-images.githubusercontent.com/48678872/159433059-c2216ee0-53f8-449a-aa6f-61dbf9086edf.png'
       className='nav__logo'
       onClick={() => window.location.reload()}
       >
