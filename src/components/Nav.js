@@ -19,7 +19,7 @@ export default function Nav() {
   }, [])
   
   return (
-    // show가 true일때는 nav__black 클래스 넣어주기
+    // show가 true일때는 nav__lack 클래스 넣어주기
     /*
     1. <조건문> || <조건문이 거짓일 때 실행될 코드>
     2. <조건문> && <조건문이 참일 때 실행될 코드>
