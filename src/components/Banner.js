@@ -1,6 +1,6 @@
 import axios from "../api/axios";
-import React, { useState, useEffect } from "react";
-import requests from "../api/request";
+import React, { useEffect, useState } from "react";
+import requests from "../api/requests";
 import "./Banner.css";
 import styled from "styled-components";
 
@@ -15,7 +15,6 @@ export default function Banner() {
 
   const fetchData = async () => {
     const request = await axios.get(requests.fetchNowPlaying);
-    console.log(request)
     const movieId =
       request.data.results[
         Math.floor(Math.random() * request.data.results.length)
@@ -31,10 +30,10 @@ export default function Banner() {
 
   const truncate = (str, n) => {
     // str이 있다면 그리고 length가 n보다 크다면 str 뒤를 자르고 ...을 붙이고 아니면 그냥 str
-    return str?.length > n ? str.substr(0, n-1) + "..." : str
-  }
-  
+    return str?.length > n ? str.substr(0, n-1) + "..." : str;
+  };
   console.log(movie.videos);
+  // console.log(movie.videos.results[0].key);
   //플레이버튼을 클릭하지 않았을 때 보여주는 화면
   if (!isClicked){
     return (<header
@@ -42,7 +41,7 @@ export default function Banner() {
     style={{
       backgroundImage: `url("https://image.tmdb.org/t/p/original/${movie?.backdrop_path}")`,
       backgroundPosition: "top center",
-      backgroundSize: "cover"
+      backgroundSize: "cover",
     }}>
       <div className="banner__contents">
         <h2 className="banner__title">
@@ -59,20 +58,22 @@ export default function Banner() {
       <div className="banner__fadeBottom"></div>
     </header>);
   }else{
-    return(
-      
+    return (
       <Container>
         <HomeContainer>
-        <Iframe
-          src ={`https://www.youtube.com/embed/${movie.videos.results[0].key}?controls=0&autoplay=1&loop=1&mute=1&playlist=${movie.videos.results[0].key}`}
-          width="640"
-          height="360"
-          frameborder="0"
-          allow="autoplay; fullscreen">         
-        </Iframe>
+          {/* key 에러로 인해 &&구문으로 수정 */}
+          <Iframe
+            width="640"
+            height="360"
+            src={`https://www.youtube.com/embed/${movie.videos.results[0] && movie.videos.results[0].key}?controls=0&autoplay=1&loop=1&mute=1&playlist=${movie.videos.results[0] && movie.videos.results[0].key}`}
+            title="YouTube video player"
+            frameborder="0"
+            allow="autoplay; fullscreen"
+            allowfullscreen
+          ></Iframe>
         </HomeContainer>
       </Container>
-    )
+    );
   }
 
 }
