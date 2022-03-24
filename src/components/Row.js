@@ -1,7 +1,7 @@
 import axios from "../api/axios";
 import React, { useEffect, useState } from "react";
 import "./Row.css";
-import { MovieModal } from "./MovieModal/index";
+import MovieModal from "./MovieModal/index";
 
 export default function Row({ isLargeRow, title, id, fetchUrl }) {
   const [movies, setMovies] = useState([]);
@@ -19,12 +19,13 @@ export default function Row({ isLargeRow, title, id, fetchUrl }) {
     setMovies(request.data.results);
   };
 
-  const handleClick = (movie) => {
+  const handleClick = (movies) => {
     setModalOpen(true);
     //클릭하면 셋무비셀렉티드 안에 해당 영화정보를 전달
     setMovieSelected(movies);
+    console.log(movies.title)
+    console.log(movies)
   };
-  // console.log(id)
   return (
     <section className="row">
       <h2>{title}</h2>
@@ -46,7 +47,7 @@ export default function Row({ isLargeRow, title, id, fetchUrl }) {
               // isLargeRow면은 row__posterLarge로 클래스 네임을 하겠다.
               // LargeRow면은 backdrop_path이미지를 써야하고 아니면 poster_path이미지 사용.
               className={`row__poster ${isLargeRow && "row__posterLarge"}`}
-              src={`https://image.tmdb.org/t/p/original/${
+              src={`https://image.tmdb.org/t/p/original${
                 isLargeRow ? movies.poster_path : movies.backdrop_path
               }`}
               // 영화클릭시 모달창 띄우기
