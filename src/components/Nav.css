@@ -28,3 +28,27 @@
 .nav__black{
   background-color: #111;
 }
+
+/* 검색창 */
+.nav__input{
+  position: fixed;
+  left: 50%;
+  padding: 5px;
+  background-color: rgba(0, 0, 0, 0.527);
+  color: white;
+  border-radius: 5px;
+  border: none;
+  transform: translate(-50%, 0);
+}
+.nav__input-btn{
+  position: fixed;
+  right: 80px;
+  width: 30px;
+  font-size: 27px;
+  height: 30px;
+  background: none;
+  text-align: center;
+  line-height: 2px;
+  border: none;
+  cursor: pointer;
+}

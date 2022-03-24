@@ -1,8 +1,13 @@
 import React, {useState, useEffect} from 'react';
+import { useNavigate } from 'react-router-dom';
 import "./Nav.css";
+import {FiSearch} from 'react-icons/fi';
 
 export default function Nav() {
   const [show, setshow] = useState(false);
+  const [searchValue, setSearchValue] = useState("");
+  const navigate = useNavigate();
+  const [inputOpen, setInputOpen] = useState(false);
 
   useEffect(() => {
     window.addEventListener("scroll", () => {
@@ -17,6 +22,16 @@ export default function Nav() {
       window.removeEventListener("scroll",() => {});
     }
   }, [])
+
+  const handleChange = (e) => {
+    setSearchValue(e.target.value);
+    navigate(`/search?q=${e.target.value}`);
+  }
+
+  const handleInput = () => {
+    setInputOpen(true);
+    console.log('handleInput')
+  }
   
   return (
     // show가 true일때는 nav__lack 클래스 넣어주기
@@ -31,6 +46,13 @@ export default function Nav() {
       onClick={() => window.location.reload()}
       >
       </img>
+
+      <button className="nav__input-btn" onClick={handleInput}>
+        <FiSearch color="#fff"/>
+      </button>
+      {inputOpen && (
+      <input className="nav__input" type="text" value={searchValue} onChange={handleChange} placeholder="제목,사람, 장르 검색" setInputOpen={setInputOpen}/>
+      )}
 
       <img
       alt="user avatar"
