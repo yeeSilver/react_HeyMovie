@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "../../api/axios";
+import MovieModal from "../../components/MovieModal/index";
 
 export default function DetailPage() {
   const { movieId } = useParams();
@@ -14,12 +15,19 @@ export default function DetailPage() {
     fetchData();
   }, [movieId]);
 
+const setModalOpen = true;
+
   if(!movie) return <div>...loading</div>
-  return <section>
-    <img
-    className="modal__poster-img"
-    src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
-    alt="poster"
-    />
-  </section>;
+  return(
+  // <section>
+  //   <img
+  //   className="modal__poster-img"
+  //   src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
+  //   alt="poster"
+  //   />
+  // </section>
+  <>
+  <MovieModal {...movie} setModalOpen={setModalOpen}/>
+  </>
+  );
 }

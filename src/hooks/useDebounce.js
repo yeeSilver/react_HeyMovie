@@ -4,14 +4,15 @@
 import { useState, useEffect } from "react";
 
 export const useDebounce = (value, delay) => {
-  const [debouceValue, setDebounceValue] = useState(value);
+  const [debounceValue, setDebounceValue] = useState(value);
 
   useEffect(() => { 
     const handler = setTimeout(() => {
       setDebounceValue(value)}, delay);
     return () => {
       clearTimeout(handler) //핸들러 초기화(delay시간이나 value를 초기화) 
-    }
+    };
   }, [value, delay]) // value나 delay가 바뀌면 다시 useEffect를 호출.
-  
+
+  return debounceValue;
 }

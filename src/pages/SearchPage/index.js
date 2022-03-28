@@ -15,7 +15,7 @@ export default function SearchPage() {
   let query = useQuery();
   // 상단 url중에 q=(여기에 들어가는 것이 searchTerm)
   const searchTerm = query.get("q");
-  const debouncedSearchTerm = useDebounce(searchTerm, 5000);
+  const debouncedSearchTerm = useDebounce(searchTerm, 2000);
 
   useEffect(() => {
     if (debouncedSearchTerm) {
@@ -25,7 +25,7 @@ export default function SearchPage() {
   //debouncedSearchTerm이 변할때마다 fetchSearchMovie 함수 콜함
   
   const fetchSearchMovie = async (searchTerm) => {
-    console.log("searchTerm", searchTerm);
+    // console.log("searchTerm", searchTerm);
     try {
       const request = await axios.get(
         `/search/multi?include_adult=false&query=${searchTerm}`

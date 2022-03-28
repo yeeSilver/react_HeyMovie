@@ -16,11 +16,10 @@
   position: fixed;
   width: 160px;
   left: 30px;
+  cursor: pointer;
   object-fit: contain;
 }
 .nav__avatar{
-  position: fixed;
-  right: 30px;
   width: 30px;
   object-fit: contain;
 }
@@ -41,8 +40,6 @@
   transform: translate(-50%, 0);
 }
 .nav__input-btn{
-  position: fixed;
-  right: 80px;
   width: 30px;
   font-size: 27px;
   height: 30px;
@@ -51,4 +48,20 @@
   line-height: 2px;
   border: none;
   cursor: pointer;
+}
+
+/* 북마크 */
+.nav__bookmark-btn{
+  background: none;
+  border: none;
+  line-height: 10px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.nav__rightBar{
+  display: flex;
+  gap: 10px;
+  position: fixed;
+  right: 10px;
 }

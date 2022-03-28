@@ -1,5 +1,6 @@
 import React from 'react';
 import "./MovieModal.css";
+import { BsBookmarkStar, bookMarkOpen } from "react-icons/bs";
 
 export default function MovieModal({
   backdrop_path,
@@ -25,12 +26,16 @@ export default function MovieModal({
             src={`https://image.tmdb.org/t/p/original${backdrop_path}`}
             alt='modal_poster-img' />
           <div className='modal__content'>
-            <p className='modal__details'>
-              <span className='modal__user_perc'>
-                100% for you
-              </span>
-              {release_date ? release_date : first_air_date}
-            </p>
+            <div className='modal__nav'>
+              <p className='modal__details'>
+                {release_date ? release_date : first_air_date}
+              </p>
+              <button  className="nav__bookmark-btn">
+                {bookMarkOpen ? (
+                <BsBookmarkStar color="#fff" size="24px"/>
+                ): (<BsBookmarkStarFill color="#fff" size="24px"/> )}
+              </button> 
+            </div>
             <h3 className='modal__title'>
               {name ? name : title}
             </h3>
