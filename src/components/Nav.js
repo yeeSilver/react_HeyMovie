@@ -3,12 +3,14 @@ import { useNavigate } from "react-router-dom";
 import "./Nav.css";
 import { FiSearch } from "react-icons/fi";
 import { BsBookmarkStar, BsBookmarkStarFill } from "react-icons/bs";
+import BookStarPage from "../pages/BookStarPage";
 
 export default function Nav() {
   const [show, setshow] = useState(false);
   const [searchValue, setSearchValue] = useState("");
   const navigate = useNavigate();
   const [inputOpen, setInputOpen] = useState(false);
+  const [bookStarOpen, setBookStarOpen] = useState(false);
 
   useEffect(() => {
     window.addEventListener("scroll", () => {
@@ -39,13 +41,22 @@ export default function Nav() {
     }
   };
 
+  const handleBookStar = () => {
+    if (!bookStarOpen) {
+      setBookStarOpen(true);
+    } else {
+      setBookStarOpen(false);
+    }
+  };
+
   return (
     // show가 true일때는 nav__lack 클래스 넣어주기
     /*
     1. <조건문> || <조건문이 거짓일 때 실행될 코드>
     2. <조건문> && <조건문이 참일 때 실행될 코드>
     */
-
+    <>
+ 
     <nav className={`nav ${show && "nav__black"}`}>
       <img
         alt="logo"
@@ -69,7 +80,7 @@ export default function Nav() {
         <button className="nav__input-btn" onClick={handleInput}>
           <FiSearch color="#fff" />
         </button>
-        <button  className="nav__bookmark-btn">
+        <button  className="nav__bookmark-btn" onClick={handleBookStar}>
           <BsBookmarkStar color="#fff" size="24px"/>
         </button> 
         <img
@@ -79,5 +90,11 @@ export default function Nav() {
         />
       </div>
     </nav>
+    <div>
+      {bookStarOpen && (
+        <BookStarPage />
+      )}
+    </div>
+    </>
   );
 }

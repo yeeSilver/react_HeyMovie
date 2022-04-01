@@ -34,7 +34,8 @@
   display: flex;
   justify-content: space-between;
 }
-.modal__nav svg{
+.nav__bookmark-btn{
+  width: 30px;
   cursor: pointer;
 }
 .modal::-webkit-scrollbar {

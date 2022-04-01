@@ -24,7 +24,8 @@ export default function Row({ isLargeRow, title, id, fetchUrl }) {
     //클릭하면 셋무비셀렉티드 안에 해당 영화정보를 전달
     setMovieSelected(movies);
     console.log(movies.title)
-    console.log(movies)
+    console.log(`https://image.tmdb.org/t/p/original/${movies.backdrop_path}`)
+    console.log(`https://image.tmdb.org/t/p/original/${movies.poster_path}`)
   };
   return (
     <section className="row">

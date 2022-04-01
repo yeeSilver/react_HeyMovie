@@ -18,15 +18,15 @@
   }
 } */
 
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
   .banner__contents {
-    width: min-content !important;
+    width: min-content;
     padding-left: 2.3rem;
-    margin-left: 0px !important;
+    margin-left: 0px;
   }
   .banner__description {
-    font-size: 0.8rem !important;
-    width: auto !important;
+    font-size: 0.8rem;
+    width: auto;
   }
   .info {
     text-align: start;
@@ -36,8 +36,13 @@
     margin-left: 6px;
   }
   .banner__button {
-    font-size: 0.8rem !important;
-    border-radius: 4px !important;
+    font-size: 0.8rem;
+    border-radius: 4px;
+  }
+  .banner__title {
+    font-size: 2rem;
+    font-weight: 800;
+    padding-bottom: 0.5rem;
   }
 }
 
